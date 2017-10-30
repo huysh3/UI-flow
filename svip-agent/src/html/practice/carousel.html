@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+  <head>
+    <title>carousel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache"/>
+    <link href="../../css/style-practice-carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <ul id="selector">
+        <li class="slide-item item1">1
+          <!-- <img src="//jdc.jd.com/img/216x264?color=471437"> -->
+        </li>
+        <li class="slide-item item2">2
+          <!-- <img src="//jdc.jd.com/img/216x264?color=0E5AA4"> -->
+        </li>
+        <li class="slide-item item3">3
+          <!-- <img src="//jdc.jd.com/img/216x264?color=1A9FF9"> -->
+        </li>
+        <li class="slide-item item4">4
+          <!-- <img src="//jdc.jd.com/img/216x264?color=258056"> -->
+        </li>
+        <li class="slide-item item5">5
+          <!-- <img src="//jdc.jd.com/img/216x264?color=1A553F&text=5"> -->
+        </li>
+      </ul>      
+    </div>
+  </body>
+  <script>
+    let mainPage = document.getElementsByClassName('container')[0]
+    let rem = px => px / 40 + 'rem'
+    let css1 = [
+      "z-index: 3; -webkit-transform: translate3d(0, 0, 10px) scale3d(1, 1, 1); visibility: visible;", 
+      "z-index: 2; -webkit-transform: translate3d(" + rem(-148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;", 
+      "z-index: 2; -webkit-transform: translate3d(" + rem(148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;", 
+      "z-index: 1; -webkit-transform: translate3d(" + rem(-240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;", 
+      "z-index: 1; -webkit-transform: translate3d(" + rem(240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;"
+    ];
+    let css = [
+      "z-index: 3; -webkit-transform: translate3d(0, 0, 10px) scale3d(1, 1, 1); visibility: visible;", 
+      "z-index: 2; -webkit-transform: translate3d(" + rem(148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;", 
+      "z-index: 1; -webkit-transform: translate3d(" + rem(240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;",
+      "z-index: 1; -webkit-transform: translate3d(" + rem(-240) + ", 0, 2px) scale3d(.667, .667, 1); visibility: visible;", 
+      "z-index: 2; -webkit-transform: translate3d(" + rem(-148) + ", 0, 6px) scale3d(.8, .8, 1); visibility: visible;"
+    ];
+    let state = {
+      x0: '',
+      y0: ''
+    }
+    let startHandle = e => {
+      state.x0 = e.touches[0].pageX
+      state.y0 = e.touches[0].pageY
+    }
+    let moveHandle = e => {
+      console.log(e.touches[0].pageX - state.x0)
+    }
+    let endHandle = e => {
+      let offsetX = e.changedTouches[0].pageX - state.x0
+      console.log(offsetX)
+      if (offsetX >= 50) {
+        console.log('向右滑')
+        swap('right')
+      } else if (offsetX <= -50) {
+        console.log('向左滑')
+        swap('left')
+      } else {
+        console.log('无效滑动')
+      }
+    }
+    let swap = (direction) => {
+      if (direction == 'left') {
+        css.unshift(css.pop())
+      } else if (direction == 'right') {
+        css.push(css.shift())
+      }
+      console.log(css)
+      for (let i = 0; i < 5; i ++) {
+        document.getElementsByClassName('slide-item').item(i).style.cssText = css[i]
+      }
+    }
+    swap()
+    mainPage.addEventListener('touchstart', startHandle)
+    mainPage.addEventListener('touchend', endHandle)
+  </script>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>SVIP-AGENT</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="register-container">
+        <header class="register-header">
+            <div id="headerStep1" class="step-item">
+                <i class="iconfont">&#xe617;</i> 验证手机号
+            </div>
+            <div id="headerStep2" class="step-item">
+                <i class="iconfont">&#xe617;</i> 支付报名费
+            </div>
+            <div id="headerStep3" class="step-item">
+                <i class="iconfont">&#xe617;</i> 关注公众号
+            </div>
+        </header>
+        <div class="step-1">
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell weui-cell_vcode">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">手机号</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" placeholder="请输入手机号">
+                    </div>
+                    <div class="weui-cell__ft">
+                        <a href="javascript:;" class="weui-vcode-btn">获取验证码</a>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="输入验证码" />
+                    </div>
+                </div>
+            </div>
+            <div class="weui-btn-area">
+                <button id="step1Btn" type="" class="weui-btn center-btn">下一步</button>
+            </div>
+        </div>
+        <div class="step-2" style="display: none;">
+            <div class="center-panel">
+                <div class="title">夜夜合伙人报名费</div>
+                <div class="subtitle">￥99</div>
+                <image class="cutline" src="http://ww1.sinaimg.cn/large/006tNc79gy1fff7sw47dpj30hj00u0nw.jpg"></image>
+                <p class="center-panel--desc1__gray">支付后即可获得</p>
+                <p class="center-panel--desc2__black">
+                    · 合伙人收益一：邀请其他合伙人可获得佣金<br>
+                    · 合伙人收益二：邀请客户可持续获取消费返利
+                </p>
+            </div>
+            <div class="weui-btn-area">
+                <button id="payBtn" type="" class="weui-btn weui-btn_primary center-btn">立即支付</button>
+            </div>
+            <p class="desc">已有 334 位合伙人加入，累积收益 400,800 元</p>
+        </div>
+        <div class="step-3" style="display: none;">
+            <p class="step-3--title__primary">支付成功</p>
+            <p class="step-3--subtitle__primary">
+                收益提现、邀请合伙人等功能<br>
+                请关注公众号
+            </p>
+            <img class="step-3--image__primary" src="http://ww3.sinaimg.cn/large/006tKfTcgy1ffpd5kniltj30760763yl.jpg" alt="">
+            <p class="step-3--text__primary">如长按无法识别，<br>请搜索公众号：夜夜VIP</p>
+            <div class="step-3--desc-content__primary weui-flex">
+                <div class="desc-content--item__primary weui-flex__item">
+                    <i class="weui-icon-waiting weui-icon_msg"></i>
+                    <div class="item--title__primary">发送邀请</div>
+                </div>
+                <div class="desc-content--item__primary weui-flex__item">
+                    <i class="weui-icon-waiting weui-icon_msg"></i>
+                    <div class="item--title__primary">收益提现</div>
+                </div>
+                <div class="desc-content--item__primary weui-flex__item">
+                    <i class="weui-icon-waiting weui-icon_msg"></i>
+                    <div class="item--title__primary">了解夜夜</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-footer">
+            <p class="weui-footer__text">&copy; 夜夜 提供技术支持</p>
+        </div>
+    </div>
+</body>
+<!-- build:js ../js/build.js -->
+<script src="../js/lib/zepto.min.js"></script>
+<script src="../js/lib/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<!-- endbuild -->
+<script>
+    var showStep1 = function() {
+        $('.step-2, .step-3').hide()
+        $('#headerStep1').addClass('active')
+        $('.step-1').show()
+    }
+    var showStep2 = function() {
+        $('.step-1, .step-3').hide()
+        $('#headerStep1').removeClass('active').addClass('done')
+        $('#headerStep2').addClass('active')
+        $('.step-2').show()
+    }
+    var showStep3 = function() {
+        $('.step-1, .step-2').hide()
+        $('#headerStep1').removeClass('active').addClass('done')
+        $('#headerStep2').removeClass('active').addClass('done')
+        $('#headerStep3').addClass('active')
+        $('.step-3').show()
+    }
+    var init = function() {
+        showStep1()
+        $('#step1Btn').tap(showStep2)
+        $('#payBtn').tap(showStep3)
+
+    }
+    $(function() {
+        init()
+        showStep1()
+    })
+</script>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+
+<head>
+  <title>Costa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="pragma" content="no-cache" />
+  <link href="../css/style-costa.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+  <div id="app" class="order-info--container">
+    <div class="order-info--header">
+      <img src="http://omi5dzcil.bkt.clouddn.com/2017-07-31-costa_logo_v2.png" class="header--logo" alt="">
+    </div>
+    <div class="order-info--main-panel">
+      <div class="main-panel--header">
+        <div class="header--left-part">
+          订单ID: {{order.order_id}}
+          <!-- <span class="cell--status-part" v-if="order.order_paid == 0" style="color: #fff; padding: .2rem 1rem; margin-left: 1rem; background-color: rgba(250, 60, 60, 0.8);">未支付</span>
+          <span class="cell--status-part" v-if="order.order_paid == 1" style="color: #fff; padding: .2rem 1rem; margin-left: 1rem; background-color: rgb(142, 198, 123);">已支付</span> -->
+        </div>
+        <div class="header--right-part">
+          <!-- <div class="edit--btn">编辑</div> -->
+          <span class="cell--status-part red" v-if="order.order_paid == 0">未支付</span>
+          <span class="cell--status-part green" v-if="order.order_paid == 1">已支付</span>
+          <!-- <span class="cell--status-part blue">退款</span> -->
+        </div>
+      </div>
+      <div class="main-panel--info-content">
+        <div class="panel-cell--content">
+          <span class="cell--left-part">姓名</span>
+          <span class="cell--right-part" v-popover:popover2>
+            <span>{{order.order_reserver}}</span>
+            <el-popover ref="popover2" placement="top" width="200" trigger="click">
+                <input v-model="order.order_reserver" type="text" placeholder="更改为" :value="order.order_reserver">
+                <el-button @click="confirmChangeOrderInfo('order_reserver', $event)" type="primary" size="mini">确认</el-button>
+            </el-popover>
+          </span>
+        </div>
+        <div class="panel-cell--content">
+          <span class="cell--left-part">电话</span>
+          <span class="cell--right-part" v-popover:popover3>
+            <span>{{order.order_phone}}</span>
+            <el-popover ref="popover3" placement="top" width="200" trigger="click">
+              <input v-model="order.order_phone" type="text" placeholder="更改为" :value="order.order_phone">
+              <el-button @click="confirmChangeOrderInfo('order_phone', $event)" type="primary" size="mini">确认</el-button>
+            </el-popover>
+          </span>
+        </div>
+        <div class="panel-cell--content">
+          <span class="cell--left-part">邮箱</span>
+          <span class="cell--right-part" v-popover:popover4>
+            <span style="font-size: .6rem;">{{order.order_email}}</span>
+            <el-popover ref="popover4" placement="top" width="200" trigger="click">
+              <input v-model="order.order_email" type="text" placeholder="更改为" :value="order.order_email">
+              <el-button @click="confirmChangeOrderInfo('order_email', $event)" type="primary" size="mini">确认</el-button>
+            </el-popover>
+          </span>
+        </div>
+        <div class="panel-cell--content">
+          <span class="cell--left-part">出行日期</span>
+          <span class="cell--right-part">
+            <span>{{order.trip_date}}</span>
+            <!-- <el-popover ref="popover5" placement="top" width="200" trigger="click">
+              <input v-model="order.trip_date" type="text" placeholder="更改为" :value="order.trip_date">
+              <el-button @click="confirmChangeOrderInfo('trip_date', $event)" type="primary" size="mini">确认</el-button>
+            </el-popover> -->
+          </span>
+        </div>
+        <div class="panel-cell--content">
+          <span class="cell--left-part">人数</span>
+          <span class="cell--right-part">{{order.passenger_num}}</span>
+        </div>
+        <div class="panel-cell--content">
+          <span class="cell--left-part">订单总价</span>
+          <span class="cell--right-part">￥{{order.order_total_price}}</span>
+        </div>
+      </div>
+      <div class="cabin-table--content" v-for="berth in berth_list">
+        <div class="cabin-table--title">
+          <div class="title--left-part">{{berth.berth_name}}</div>
+          <div class="title--right-part">
+            <div class="title-cell--content">
+              <span class="cell--left-part">总价</span>
+              <span class="cell--right-part">￥{{berth.berth_price}}</span>
+            </div>
+          </div>
+        </div>
+        <div id="myTable"></div>
+        <el-table :data="berth.passenger_list" border style="width: 100%">
+          <el-table-column prop="passenger_id" label="乘客编号" sortable width="120"></el-table-column>
+          <el-table-column prop="passenger_first_name" label="姓" width="70">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_first_name" type="text" placeholder="更改为" :value="scope.row.passenger_first_name">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_first_name}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_last_name" label="名" width="110">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_last_name" type="text" placeholder="更改为" :value="scope.row.passenger_last_name">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_last_name}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_sex" label="性别" sortable width="90">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_sex" type="text" placeholder="更改为" :value="scope.row.passenger_sex">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_sex}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_phone" label="电话" sortable width="140">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_phone" type="text" placeholder="更改为" :value="scope.row.passenger_phone">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_phone}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_birth" label="生日" sortable width="140">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_birth" type="text" placeholder="更改为" :value="scope.row.passenger_birth">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_birth}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_passport_type" label="护照类型" sortable width="140">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_passport_type" type="text" placeholder="更改为" :value="scope.row.passenger_passport_type">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_passport_type}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_passport_num" label="护照号码" sortable width="120">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_passport_num" type="text" placeholder="更改为" :value="scope.row.passenger_passport_num">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_passport_num}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_nationality" label="国籍" sortable width="100">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_nationality" type="text" placeholder="更改为" :value="scope.row.passenger_nationality">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_nationality}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_ctf" label="身份证号" sortable width="180">
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_ctf" type="text" placeholder="更改为" :value="scope.row.passenger_ctf">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_ctf}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_charge" label="支付金额" sortable width="120">
+            <template scope="scope">
+              <span>￥ {{scope.row.passenger_charge}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="passenger_mark" label="备注" sortable>
+            <template scope="scope">
+              <el-popover trigger="click" placement="top">
+                <input v-model="scope.row.passenger_mark" type="text" placeholder="更改为" :value="scope.row.passenger_mark">
+                <el-button @click="confirmEdit(scope, $event)" type="primary" size="mini">确认</el-button>
+                <div slot="reference" class="name-wrapper">
+                  <span style="margin-left: 10px;">{{scope.row.passenger_mark}}</span>
+                </div>
+              </el-popover>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="../js/lib/zepto.min.js"></script>
+<script>
+  var domain = 'https://18546245.qcloud.la/'
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        order_list_total: [],
+        order_list_current: [],
+        order_info: '',
+        order: '',
+        berth_list: ''
+      }
+    },
+    mounted: function () {
+      this.getOrderInfo(this.getQueryString('order_id'))
+      $('#myTable').DataTable({
+
+      })
+    },
+    methods: {
+      getQueryString: function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+      },
+      getOrderInfo: function (order_id) {
+        var _this = this
+        $.ajax({
+          url: domain + 'Admin/Order/getOrderInfo',
+          data: {
+            order_id: order_id
+          },
+          success: function (res) {
+            console.log(JSON.parse(res).data)
+            _this.order_info = JSON.parse(res).data
+            _this.order = JSON.parse(res).data.order
+            _this.berth_list = JSON.parse(res).data.berth_list
+          }
+        })
+      },
+      editAttr: function() {
+        alert('sdf')
+      },
+      confirmEdit: function(scope, $event) {
+        var passenger_id = scope.row.passenger_id
+        var change_key = scope.column.property
+        var change_value = $($event.currentTarget).prev().val()
+        // console.log($($event.currentTarget).prev().val())
+        console.log(scope.column.property + '/property')
+        console.log(scope.row[scope.column.property] + '/id')
+        console.log(scope.column.label + '/key')
+        scope.row[scope.column.property] = $($event.currentTarget).prev().val()
+        $.ajax({
+          url: domain + '/Admin/Passenger/editPassengerInfo?passenger_id=' + passenger_id + '&' + change_key + '=' + change_value,
+          success: function(res) {
+            if (JSON.parse(res).code == 1) {
+              console.log('修改成功')
+            } else {
+              alert(JSON.parse(res).msg)
+            }
+          }
+        })
+      },
+      confirmChangeOrderInfo: function(key, $event) {
+        var _this = this
+        console.log(key)
+        console.log($($event.currentTarget).prev().val())
+        $.ajax({
+          url: domain + '/Admin/Order/editOrderInfo?order_id=' + _this.order.order_id + '&' + key + '=' + $($event.currentTarget).prev().val(),
+          success: function(res) {
+            if (JSON.parse(res).code == 1) {
+              console.log('修改成功')
+            } else {
+              alert('修改失败，请刷新重试')
+            }
+          }
+        })
+      }
+    }
+  })  
+</script>
+</html>

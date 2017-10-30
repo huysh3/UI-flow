@@ -1,0 +1,319 @@
+@import "./lib/lib-mixins";
+@import "./lib/lib-reset";
+@import "./lib/lib-rem";
+
+@blue: #316eae;
+@yellow: rgb(250, 213, 38);
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active 在低于 2.1.8 版本中 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.login--container {
+  width: 100vw;
+  height: 100vh;
+  .login--content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    .content--header {
+      background-color: @yellow;
+      color: @blue;
+      font-size: .8rem;
+      width: 13rem;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .header--logo {
+      width: 2rem;
+      position: absolute;
+      left: .7rem;
+      top: .3rem;
+    }
+    .content--body {
+      background-color: #fff;
+      padding: 1rem 0;
+      .input--area {
+        margin-bottom: .4rem;
+        .title {
+          font-size: .7rem;
+          width: 2rem;
+          padding-left: 1rem;
+          display: inline-block;
+          position: relative;
+          left: .4rem;
+        }
+        .input-bar {
+          width: 8rem;
+          height: 1rem;
+          border: 0;
+          border-bottom: 1px solid #999;
+          font-size: .8rem;
+        }
+      }
+    }
+    .btn--area {
+      padding: 0 2rem .7rem 2rem;
+    }
+    .content--btn {
+      background-color: @blue;
+      color: #fff;
+      text-align: center;
+      font-size: .7rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+.order-list--container {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  .order-list--header {
+    width: 100vw;
+    height: 2rem;
+    background-color: #fff;
+    line-height: 2rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .list--item {
+    width: 18vw;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    display: inline-block;
+    font-size: .8rem;
+    &.active {
+      background-color: @blue;
+      color: #fff;
+    }
+  }
+  .search--bar {
+    text-align: center;
+    padding: 0 2rem;
+    .search--input {
+      height: 1rem;
+      margin: .3rem;
+      border: 1px solid @blue;
+      border-radius: 1rem;
+      width: 25vw;
+      text-align: center;
+      font-size: .7rem;
+      position: relative;
+      bottom: .1rem;
+    }
+  }
+  .logoff--btn {
+    color: #aaa;
+    font-size: .8rem;
+  }
+  .header--logo {
+    height: 2rem;
+    float: right;
+    position: absolute;
+    right: 0;
+  }
+  .table--content {
+    .el-table__row:nth-child(2n - 1) {
+      background: #f0f0f0;
+    }
+  }
+  .export-excel--btn {
+    width: 3rem;
+    height: 3rem;
+    background-color: @blue;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 3rem;
+    font-size: .8rem;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 9999;
+    box-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-user-select: none;
+    &:active {
+      background-color: #052F5B;
+      box-shadow: none;
+    }
+  }
+}
+
+.order-info--container {
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  width: 100vw;
+  padding-bottom: 1px;
+  .order-info--header {
+    background-color: @yellow;
+    height: 2rem;
+    width: 100vw;
+    .header--logo {
+      height: 2rem;
+      float: right;
+      margin-right: .4rem;
+    }
+  }
+  .order-info--main-panel {
+    width: 90vw;
+    margin: 5vw;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    .main-panel--header {
+      height: 2rem;
+      line-height: 2rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #aaa;
+      .header--left-part {
+        padding-left: 1rem;
+        font-size: .8rem;
+        display: inline-block;
+      }
+      .header--right-part {
+        padding-right: 2rem;
+        .cell--status-part {
+          color: #fff;
+          padding: .2rem 1rem;
+          margin-left: 1rem;
+          font-size: .7rem;
+          &.green {
+            background-color: rgb(142, 198, 123);
+          }
+          &.red {
+            background-color: rgba(250, 60, 60, 0.8);
+          }
+          &.blue {
+            background-color: @blue;
+          }
+        }
+      }
+    }
+    .main-panel--info-content {
+      padding: 1rem;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      .panel-cell--content {
+        width: 24vw;
+        background-color: #eee;
+        color: #999;
+        font-size: .7rem;
+        height: 1.8rem;
+        line-height: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      .cell--left-part {
+        display: inline-block;
+        border-right: 1px solid #ccc;
+        min-width: 3rem;
+        padding: 0 .4rem;
+        text-align: center;
+      }
+      .cell--right-part {
+        padding-left: .7rem;
+        color: #333;
+      }
+      .total-pay {
+        width: 55.5vw;
+        .cell--right-part {
+          letter-spacing: 1px;
+          font-weight: bold;
+          font-size: .9rem;
+        }
+        .cell--status-part {
+          float: right;
+          width: 8rem;
+          background-color: rgb(142, 198, 123);
+          color: #fff;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .cabin-table--content {
+    .cabin-table--title {
+      height: 2rem;
+      padding: .4rem 1rem;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      .title--left-part {
+        font-size: .8rem;
+        line-height: 2rem;
+      }
+      .title-cell--content {
+        width: 24vw;
+        background-color: #eee;
+        color: #999;
+        font-size: .7rem;
+        height: 1.8rem;
+        line-height: 1.8rem;
+        margin-bottom: 1rem;        
+        .cell--left-part {
+          display: inline-block;
+          border-right: 1px solid #ccc;
+          min-width: 3rem;
+          padding: 0 .4rem;
+          text-align: center;
+        }
+      }
+    }
+    .cabin-table--header {
+      background-color: #ccc;
+      color: #999;
+      display: flex;
+    }
+    .header--item {
+      flex: 1;
+      text-align: center;
+      font-size: .8rem;
+      padding: .4rem 0;
+      border-right: 1px solid #999;
+      &.nationality {
+        width: 4rem;
+        flex: none;
+      }
+    }
+    .cabin-table--body {
+      display: flex;
+    }
+    .cabin-table--body:nth-child(2n - 1) {
+      background-color: #f0f0f0;
+    }
+    .body--item {
+      flex: 1;
+      font-size: .7rem;
+      border-right: 1px solid #999;
+      padding: .4rem;
+      &.nationality {
+        flex: none;
+        width: 4rem;
+      }
+    }
+  }
+}

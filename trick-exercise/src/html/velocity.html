@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+  <head>
+    <title>blur</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache"/>    
+    <link href="../css/style-custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="velocity-container">
+      <!--<p class="title">Trick</p>-->
+      <button id="animateStart" type="">Animate Run!</button>
+      <p class="subtitle box-stagger">Velocity Effect</p>
+      <p class="subtitle box-stagger">
+        Velocity Effect<br>
+        Velocity Effect<br>
+        Velocity Effect<br>
+        Velocity Effect
+      </p>
+      <p class="subtitle box-stagger">Velocity Effect</p>
+      <p class="subtitle box-stagger">Velocity Effect</p>
+      <p class="subtitle box-stagger">Velocity Effect</p>
+      <p class="subtitle box-stagger">Velocity Effect</p>
+    </div>
+  </body>
+  <script src="../js/lib/zepto.min.js"></script>
+  <script src="../js/lib/velocity.min.js"></script>
+  <script src="../js/lib/velocity.ui.js"></script>
+  <script>
+    var $element = $('.velocity-container')
+    var $el1 = $('.title')
+    var $el2 = $('.subtitle')
+    var $el3 = $('.box-stagger')
+
+    $('#animateStart').tap(function() {
+      setTimeout(function() {
+        $el3.velocity("transition.slideUpBigIn", { duration: 400, stagger: 400 })
+      }, 400)
+    })
+  </script>
+</html>

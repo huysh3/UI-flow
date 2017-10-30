@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>余额</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="user-wallet-container">
+      <section class="container--main-panel">
+        <img class="main-panel--icon" src="http://omi5dzcil.bkt.clouddn.com/2017-06-22-%E7%A0%96%E7%9F%B3%403x.png" alt="">
+        <p class="main-panel--desc">余额(元)</p>
+        <p class="main-panel--user-balance">1233.02</p>
+        <p id="bookRoom" class="main-panel--balance-desc">点此订房，使用余额买单</p>
+      </section>
+      <p class="container--desc_1">· 余额可在全国会所通用（小费除外）</p>
+      <p class="container--desc_2">· 使用信用卡充值免手续费</p>
+      <!--<p class="container--desc_1">钱包余额全国会所通用</p>-->
+      <!--<img src="http://omi5dzcil.bkt.clouddn.com/2017-06-22-%E5%B0%8F%E5%AD%97%403x.png" class="container--desc_2"></img>-->
+      <div class="container--center-btn center-btn">去充值</div>
+      <div class="container--bottom-part">
+        <span class="bottom-part--left-part">钱包明细</span>
+        <span class="bottom-part--right-part">常见问题</span>
+      </div>
+      <div class="modal--container">
+        <div class="modal--mask"></div>
+        <div class="modal--content">
+          <div class="modal--header">
+            <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fhcgc1hajij30bt0bwwex.jpg" alt="">
+          </div>
+          <div class="modal--body">
+            <p class="title">使用夜夜客户端订房和买单</p>
+            <p class="subtitle">体验更流畅  交易更安全</p>
+          </div>
+          <div class="modal--footer">
+            <div class="footer--btn">立即下载</div>
+          </div>
+          <img class="close-btn" src="https://ws2.sinaimg.cn/large/006tNc79gy1fhcgwfish2j3030030743.jpg" alt="">
+        </div>
+      </div>
+    </div>
+</body>
+
+<script src="../js/lib/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<script>
+  $('#bookRoom').tap(function() {
+    $('.modal--container').addClass('active')
+  })
+  $('.close-btn').tap(function() {
+    $('.modal--container').removeClass('active')
+  })
+  setTimeout(function() {
+    $('.modal--container').addClass('active')
+  }, 1000)
+</script>
+
+</html>

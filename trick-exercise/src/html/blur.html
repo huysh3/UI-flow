@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+  <head>
+    <title>blur</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache"/>    
+    <link href="../css/style-custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <p class="title letter-blur">
+      <span class="hide-for-trans">Trick</span>
+    </p>
+    <p class="subtitle letter-blur">
+      <span class="hide-for-trans">Blur </span><span class="hide-for-trans">Effect</span>
+    </p>
+  </body>
+  <script src="../js/lib/zepto.min.js"></script>
+  <script>
+    setTimeout(function() {
+      $('.hide-for-trans').css('opacity', 1)
+      $('.letter-blur').removeClass('letter-blur')
+    }, 1000)
+  </script>
+</html>

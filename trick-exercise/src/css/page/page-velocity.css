@@ -1,0 +1,12 @@
+.velocity-container {
+  position: relative;
+  text-align: center;
+}
+.title,
+.subtitle {
+  line-height: 3rem;
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transition: .3s all linear;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>钱包充值</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+    <style>
+        .list--item_background {
+            background: url('https://upyun.cdn.m.yeyeapp.in/h5-express/public/images/user/top-up-card.png');
+        }
+    </style>
+</head>
+
+<body>
+    <!--接口数据：v1/module/recharge-panel-->
+    <div class="user-top-up-container">
+        <p class="container--top-desc">充值金额只可抵扣房间消费 12000元</p>
+        <p class="container--top-desc2">当前余额  0元</p>
+        <section class="container--item-list">
+            <div class="list--item_background">
+                <div class="list--item_container">
+                    <span class="item--top-up">10000元</span>
+                    <span class="item--top-up_bonus">送1000元</span>
+                    <span class="item--top-up_right-part">充值 <i class="iconfont">&#xe7b2;</i></span>
+                </div>
+            </div>
+            <div class="list--item_background">
+                <div class="list--item_container">
+                    <span class="item--top-up">5000元</span>
+                    <span class="item--top-up_bonus">送500元</span>
+                    <span class="item--top-up_right-part">充值 <i class="iconfont">&#xe7b2;</i></span>
+                </div>
+            </div>
+            <div class="list--item_background">
+                <div class="list--item_container">
+                    <span class="item--top-up">2000元</span>
+                    <span class="item--top-up_right-part">充值 <i class="iconfont">&#xe7b2;</i></span>
+                </div>
+            </div>
+        </section>
+        <p class="container--bottom-desc">— 更多优惠敬请期待 —</p>
+    </div>
+    <div class="modal-container">
+      <div class="container--mask"></div>
+      <div class="step-1">
+        <div class="container--content">
+            <div class="modal--head">绑定手机号</div>
+            <div class="modal--body">
+            <input class="body--input" placeholder="输入手机号">
+            </div>
+            <div class="modal--footer"><div id="nextStepBtn" class="center-btn">下一步</div></div>
+        </div>
+      </div>
+      <div class="step-2">
+        <div class="container--content">
+            <div class="modal--head">
+
+            </div>
+            <div class="modal--body">
+            <input class="body--input" placeholder="输入验证码">
+            <span class="body--resend">重新发送</span>
+            </div>
+            <div class="modal--footer"><div class="center-btn">完成</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-container active">
+        <div class="container--mask"></div>
+        <div class="container--content">
+            <div class="modal--head recharge--content">
+                <img class="recharge--content_img" src="https://upyun.cdn.m.yeyeapp.in/h5-express/public/images/user/top-up-card.png" alt="">
+                <p class="recharge--content_top-up">5000元 <span class="top-up--bouns">送400元</span></p>
+            </div>
+            <div class="modal--body">
+                <p class="recharge--desc">
+                    可获得 11000 元，可抵扣本次账单中的 5000 元，剩余 6000 元；余额可在多家会所使用。
+                </p>
+            </div>
+            <div class="modal--footer recharge--footer">
+                <span class="footer--left-part">取消</span>
+                <span class="footer--right-part">去充值</span>
+            </div>
+        </div>    
+    </div>
+</body>
+
+<script src="../js/lib/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<script>
+    function showStep1() {
+        $('.step-1').show()
+        $('.step-2').hide()
+    }
+    function showStep2() {
+        $('.step-2').show()
+        $('.step-1').hide()
+    }
+    $('#nextStepBtn').tap(showStep2)
+    // showStep1()
+</script>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+
+<head>
+  <title>Costa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="pragma" content="no-cache" />
+  <link href="/Public/css/style-costa.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+</head>
+
+<body>
+  <div id="app" class="order-list--container">
+    <nav class="order-list--header">
+      <span @click="changeTab" data-tag="breakfast" class="list--item active">Breakfast</span>
+      <span @click="changeTab" data-tag="reserve" class="list--item">Reserve</span>
+      <span @click="changeTab" data-tag="paid" class="list--item">Paid</span>
+      <span class="search--bar">
+        <input type="text" v-model='search' class="search--input" placeholder="Search, use lowercase">
+      </span>
+      <span class="logoff--btn">登出</span>
+      <img src="http://omi5dzcil.bkt.clouddn.com/2017-07-31-costa_logo_v2.png" class="header--logo" alt="">
+    </nav>
+    <div class="table--content">
+      <div class="export-excel--btn" @click="exportExcel">
+        <!-- <a href="https://18546245.qcloud.la/Admin/Order/orderToExcel?tablename=order&field=order_id%2Corder_total_price&filter%5Border_status%5D=1&filter%5Border_paid%5D=1&filename=1"> -->
+          导出
+        <!-- <a> -->
+      </div>
+      <el-collapse-transition>
+        <el-table :data="searchData" border style="width: 100%" v-if="currentNavStatus == 'breakfast'">
+          <el-table-column prop="order_id" label="订单id" sortable width="180"></el-table-column>
+          <el-table-column prop="order_total_price" label="订单价格" sortable width="180" v-if="currentNavStatus != 'breakfast'">
+            <template scope="scope">
+              <span style="margin-left: 10px;">￥{{scope.row.total_price || '0.00'}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="reserver" label="姓名" sortable width="180"></el-table-column>
+          <el-table-column prop="cabin_id" label="Cabin ID" sortable width="180"></el-table-column>
+          <el-table-column prop="costa_id" label="Costa ID" sortable width="180"></el-table-column>
+          <el-table-column prop="transac_id" label="Transac ID" sortable width="180"></el-table-column>
+          <el-table-column prop="order_time" sortable label="服务时间" width="240" v-if="currentNavStatus == 'breakfast'">
+            <template scope="scope">
+              <el-icon name="time"></el-icon>
+              <span style="margin-left: 10px;">{{scope.row.service_time}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="内容" v-if="currentNavStatus == 'breakfast'">
+            <template scope="scope">
+              <span v-for="item in JSON.parse(scope.row.marks)">
+                {{item.name}} * {{item.number}} <br>
+              </span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-collapse-transition>
+      <el-collapse-transition>
+        <el-table :data="searchData" border style="width: 100%" v-if="currentNavStatus != 'breakfast'">
+          <el-table-column prop="order_id" label="订单id" sortable></el-table-column>
+          <el-table-column prop="order_total_price" label="订单价格" sortable>
+            <template scope="scope">
+              <span style="margin-left: 10px;">￥{{scope.row.total_price || '0.00'}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="reserver" label="Name" sortable></el-table-column>
+          <el-table-column prop="product_name" label="Product Name" sortable></el-table-column>
+          <el-table-column prop="numbers" label="Product Number" sortable></el-table-column>
+          <el-table-column prop="cabin_id" label="Cabin ID" sortable></el-table-column>
+          <el-table-column prop="costa_id" label="Costa ID" sortable></el-table-column>
+          <el-table-column prop="transac_id" label="Transac ID" sortable></el-table-column>
+          <el-table-column prop="people_number" label="People" sortable></el-table-column>
+          <el-table-column prop="order_time" label="下单时间" sortable></el-table-column>
+          <!-- <el-table-column prop="order_time" sortable label="服务时间" width="240" v-if="currentNavStatus == 'breakfast'">
+            <template scope="scope">
+              <el-icon name="time"></el-icon>
+              <span style="margin-left: 10px;">{{scope.row.service_time}}</span>
+            </template>
+          </el-table-column> -->
+        </el-table>
+      </el-collapse-transition>
+      
+    </div>
+  </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="/Public/js/lib/zepto.min.js"></script>
+<script>
+  var domain = 'https://34322972.qcloud.la'
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        order_list_total: [],
+        order_list_current: [],
+        search: '',
+        currentNavStatus: 'breakfast',
+      }
+    },
+    mounted: function() {
+      this.getOrderList()
+    },
+    computed: {
+      searchData: function () {
+        var search = this.search;
+        if (search) {
+          return this.order_list_current.filter(function (product) {
+            return Object.keys(product).some(function (key) {
+              return String(product[key]).toLowerCase().indexOf(search) > -1
+              // return String(product[key]).indexOf(search) > -1
+            })
+          })
+        }
+        return this.order_list_current;
+      }      
+    },
+    methods: {
+      handleEdit: function(index, scope) {
+        window.location.href = 'http://localhost:8080/html/order-info.html?order_id=' + this.order_list_current[index].order_id
+      },
+      handleDelete: function(index, scope) {
+        console.log(this.order_list_current[index].order_id)
+      },
+      changeTab: function(e) {
+        $('.order-list--header .list--item').removeClass('active')
+        $(e.currentTarget).addClass('active')
+        this.currentNavStatus = $(e.currentTarget).data('tag')
+        this.order_list_current = this.order_list_total[$(e.currentTarget).data('tag')]
+        console.log(this.order_list_current)
+      },
+      exportExcel: function() {
+        var field = 'order_id,order_transac,order_total_price,order_phone,order_email,order_reserver,order_starttime,order_finishtime,order_trip_id,order_paid,order_verified';
+        var filter = {
+          order_status: '1'
+        }, a = new Date()
+        var filename = '' + a.getFullYear() + '-' + (a.getMonth() + 1) + '-' + a.getDate()
+        window.location.href = 'https://18546245.qcloud.la/Admin/Order/orderToExcel' +
+                                  '?tablename=order' +
+                                  '&field=' + encodeURIComponent(field) + 
+                                  '&filter%5Border_status%5D=1' +
+                                  '&filename=' + filename        
+
+        // $.ajax({
+        //   url: domain + 'Admin/Order/orderToExcel',
+        //   data: {
+        //     tablename: 'order',
+        //     field: 'order_id,order_total_price',
+        //     filter: {
+        //       order_status: '1'
+        //     },
+        //     filename: '1'
+        //   },
+        //   success: function(res) {
+        //     console.log('sdf')
+        //     window.location.href = 'https://18546245.qcloud.la/Admin/Order/orderToExcel' + 
+        //                                   '?tablename=order' + 
+        //                                   '&field=order_id%2Corder_total_price' + 
+        //                                   '&filter%5Border_status%5D=1' + 
+        //                                   '&filter%5Border_paid%5D=1' + 
+        //                                   '&filename=1'
+        //   }
+        // })
+      },
+      getOrderList: function() {
+        var _this = this
+        $.ajax({
+          url: domain + '/Admin/Order/getOrderList',
+          success: function(res) {
+            console.log(JSON.parse(res).data)
+            _this.order_list_total = JSON.parse(res).data
+            _this.order_list_current = _this.order_list_total['breakfast']
+          }
+        })
+      }
+    }
+  })
+</script>
+</html>

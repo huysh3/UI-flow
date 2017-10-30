@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>邀请</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="svip-send-invite--container">
+        <img class="top-content--img_bg" src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/svip_register/header.png" alt="">
+        <img class="top-content--img_fg" src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/svip_register/header2.png" alt="">
+        <section class="body--content">
+            <p class="body--title_1">送好友 <span class="title--number">1000</span> 元消费礼金，好友完成首次预预订并消费</p>
+            <p class="body--title_2">你亦可获得 <span class="title--number">1000</span> 元消费礼金</p>
+            <div class="body--cutline"></div>
+            <p class="body--desc">消费礼金可支付房间酒水，预预订即可使用</p>
+        </section>
+        <footer class="footer--btn-content">
+            <div id="showMask" class="center-btn">邀请微信好友</div>
+        </footer>
+        <div class="share-mask">
+            <img src="https://upyun.cdn.m.yeyeapp.in/h5-express/public/images/user/invite-guide.png"></img>
+        </div>    
+    </div>
+</body>
+
+<script src="../js/lib/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<script>
+    $(function() {
+        $('#showMask').tap(function() {
+            $('.share-mask').show()
+        })
+        $('.share-mask').tap(function() {
+            $('.share-mask').hide()
+        })
+    })
+</script>
+
+</html>

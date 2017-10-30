@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta name="full-screen" content="yes">
+        <title>夜夜</title>
+        <link href="../css/style-svip-agent.css" rel="stylesheet">
+        <link href="http://m.yeyeapp.in/h5-express/public/css/weui.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="agent-register-landing-container">
+            <image class="container--image" src="http://ww3.sinaimg.cn/large/006tNbRwgy1ffjwuirr44j30ku0cw0w8.jpg"></image>
+            <div class="container--user-content">
+                <image class="user-content--avatar" src="http://ww3.sinaimg.cn/large/006tNbRwgy1ffjwuirr44j30ku0cw0w8.jpg"></image>
+                <p class="user-content--name">来自 <span class="name">暱_痕</span> 的入伙邀请</p>
+            </div>
+            <section class="container--desc">
+                <div class="desc--title">
+                    <span class="title-text">夜夜合伙人是什么：</span>
+                    <image class="title-image" src="http://ww2.sinaimg.cn/large/006tNbRwgy1ffjx13g450j304g01fa9t.jpg"></image>
+                </div>
+                <div class="desc--content-list">
+                    <p class="desc--content">
+                        · 夜夜是一个让会员在全球顶级会所都是VVVIP的服务平台。目前已开通 9 大城市的会所预订及消费。
+                    </p>
+                    <p class="desc--content">
+                        · 夜夜合伙人是夜夜推出的市场推广收益共享计划，让每一位参与者都能获益，而且是持续获益。
+                    </p>
+            </section>
+            <section class="container--desc">
+                <div class="desc--title">
+                    <span class="title-text">收益：</span>
+                    <image class="title-image" src="http://ww4.sinaimg.cn/large/006tNbRwgy1ffjxeaoo2yj30a101fmwy.jpg"></image>
+                </div>
+                <div class="desc--content-list">
+                    <p class="desc--content">
+                        · 每成功邀请一位合伙人，可获得 39 元佣金；
+                    </p>
+                    <p class="desc--content">
+                        · 你邀请的合伙人，再成功邀请其他合伙人，你可获得 19 元/位的佣金；
+                    </p>
+                    <p class="desc--content">
+                        · 客户每完成一笔消费，相关的合伙人均可获得返利。最高为消费佣金的 70% ，至少为10%。
+                    </p>
+            </section>
+            <section class="container--desc">
+                <div class="desc--title">
+                    <span class="title-text">夜夜合伙人是什么：</span>
+                    <image class="title-image" src="http://ww4.sinaimg.cn/large/006tNbRwgy1ffjxen6nz6j30a101fwea.jpg"></image>
+                </div>
+                <div class="desc--content-list">
+                    <p class="desc--content">
+                        · 接受现有合伙人邀请 >支付 99 元的报名费 > 享受收益；
+                    </p>
+            </section>
+            <div style="height: 2.5rem;" class="takeplace"></div>
+            <footer class="container--footbar-content">
+                <div class="footbar--btn">立即加入</div>
+            </footer>
+        </div>
+    </body>
+    <script src="../js/lib/zepto.min.js"></script>
+    <script src="../js/util.js"></script>
+    <script src="http://progrape.github.io/weui.js/weui.js"></script>
+    <script>
+        $(function (){
+            $('#routerGoRegister').tap(function() {
+                $('#routerGoRegister').inlineLoading()
+                setTimeout(function() {
+                    window.location.href = './register.html'
+                }, 1000)
+            });
+        })
+    </script>
+</html>

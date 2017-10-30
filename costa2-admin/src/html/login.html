@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+  <head>
+    <title>Costa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache"/>    
+    <link href="/Public/css/style-costa.css" rel="stylesheet">
+    <style>
+      .login--container {
+        background: url('https://ws3.sinaimg.cn/large/006tKfTcgy1fibudsye6uj31hc0u0e82.jpg') no-repeat;
+        background-size: 100vw 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login--container">
+      <div class="login--content">
+        <div class="content--header">
+          <img src="http://omi5dzcil.bkt.clouddn.com/2017-07-31-costa_logo_v2.png" class="header--logo" alt="">
+          邮轮后端系统
+        </div>
+        <div class="content--body">
+          <div class="input--area">
+            <span class="title">账户</span>
+            <input id="username" class="input-bar" type="text">
+          </div>
+          <div class="input--area">
+            <span class="title">密码</span>
+            <input id="password" class="input-bar" type="password">
+          </div>
+        </div>
+        <div class="btn--area">
+          <div id="login" class="content--btn">登录</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/Public/js/lib/zepto.min.js"></script>
+  <script>
+    var domain = 'https://18546245.qcloud.la/'
+
+    $('#login').click(function() {
+      $.ajax({
+        url: domain + 'Admin/Index/check_login',
+        type: 'POST',
+        data: {
+          admin_account: $('#username').val(),
+          admin_password: $('#password').val()
+        },
+        success: function(res) {
+          console.log(res.data)
+        }
+      })
+    })
+  </script>
+</html>

@@ -1,0 +1,43 @@
+.register-header {
+  background-color: #fff;
+  height: 3rem;
+  .step-item {
+    width: 33.3vw;
+    line-height: 3rem;
+    float: left;
+    font-size: .6rem;
+    text-align: center;
+    position: relative;
+    color: #9b9b9b;
+  }
+  .step-item::after {
+    content: ' ';
+    display: block;
+    width: 5vw;
+    height: .1rem;
+    background-color: #d8d8d8;
+    position: absolute;
+    right: -2.5vw;
+    top: 1.45rem;
+  }
+  .step-item:last-child::after {
+    display: none;
+  }
+  .step-item.active {
+    color: #000;
+  }
+  .step-item .iconfont {
+    position: relative;
+    top: .06rem;
+  }
+  .step-item.done {
+    color: #09bb07;
+  }
+}
+
+.register-header::after {
+  content: '.';
+  display: block;
+  clear: buth;
+  visibility: hidden;
+}

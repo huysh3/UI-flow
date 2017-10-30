@@ -1,0 +1,37 @@
+body {
+  text-align: center;
+  min-height: 100vh;
+  font-size: 2rem;
+}
+p {
+  margin: .4rem;
+  letter-spacing: .4rem;
+}
+.title {
+  font-weight: 800;
+}
+.letter-blur {
+  -webkit-filter: blur(0.5rem);
+  filter: blur(0.5rem);
+}
+.hide-for-trans {
+  opacity: 0;
+}
+.velocity-container {
+  position: relative;
+  text-align: center;
+}
+.title,
+.subtitle {
+  margin: 3rem 0;
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transition: .3s all linear;
+}
+* {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}

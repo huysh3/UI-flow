@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-rem="375">
+
+<head>
+  <title>北海汉立</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="pragma" content="no-cache" />
+  <script src="https://unpkg.com/vue@2.4.2"></script>
+  <link href="../css/style-hanli.css" rel="stylesheet">
+  <style>
+    .bg-box-1,
+    .bg-box-2,
+    .bg-box-3,
+    .bg-box-4 {
+      opacity: 0.4;
+    }
+    .bg-box-1{
+       background: url('https://ws2.sinaimg.cn/large/006tKfTcgy1fi5cr204mkj30zk0qoaer.jpg') no-repeat center/cover; 
+    }
+    .bg-box-2{
+       background: url('https://ws3.sinaimg.cn/large/006tKfTcgy1fi5cramr4bj30zk0qoae5.jpg') no-repeat center/cover; 
+    }
+    .bg-box-3{
+       background: url('https://ws3.sinaimg.cn/large/006tKfTcgy1fi5cturwcbj30zk0qo78w.jpg') no-repeat center/cover; 
+    }
+    .bg-box-4{
+       background: url('https://ws2.sinaimg.cn/large/006tKfTcgy1fi5cu6su5pj30zk0qo788.jpg') no-repeat center/cover; 
+    }
+    #wrap > ul > li:nth-child(1){
+      background: url('https://ws2.sinaimg.cn/large/006tKfTcgy1fi5cr204mkj30zk0qoaer.jpg') no-repeat center/cover;
+    }
+    #wrap > ul > li:nth-child(2){
+      background: url('https://ws3.sinaimg.cn/large/006tKfTcgy1fi5cramr4bj30zk0qoae5.jpg') no-repeat center/cover;
+    }
+    #wrap > ul > li:nth-child(3){
+      background: url('https://ws3.sinaimg.cn/large/006tKfTcgy1fi5cturwcbj30zk0qo78w.jpg') no-repeat center/cover;
+    }
+    #wrap > ul > li:nth-child(4){
+      background: url('https://ws2.sinaimg.cn/large/006tKfTcgy1fi5cu6su5pj30zk0qo788.jpg') no-repeat center/cover;
+      width: 700px;
+    }	    
+  </style>
+</head>
+
+<body>
+  <div id="app" class="home--container">
+    <div class="title--bar insetshadow">
+      <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fi6oinborwj30hs0hsdgh.jpg" alt="" class="title--left-part">
+      <p class="title">广西北海汉立商贸有限公司</p>
+      <p class="subtitle">联系方式: 136-0245-5397</p>
+    </div>
+    <div class="nav-bar--container">
+      <div @click="changeNavBlock1" class="nav--item"><div>公司简介</div></div>
+      <div @click="changeNavBlock2" class="nav--item"><div>公司资质</div></div>
+      <div @click="changeNavBlock6" class="nav--item"><div>质量体系认证</div></div>
+      <div @click="changeNavBlock3" class="nav--item"><div>装备能力一览表</div></div>
+      <div @click="changeNavBlock4" class="nav--item"><div>检测设备一览表</div></div>
+      <div @click="changeNavBlock5" class="nav--item"><div>公司足迹</div></div>
+      <!-- <div @click="changeNavBlock6" class="nav--item"><div>合作伙伴</div></div> -->
+    </div>
+    <div class="carousel">
+      <div class="bg bg-box-1"></div>
+      <div class="bg bg-box-2"></div>
+      <div class="bg bg-box-3"></div>
+      <div class="bg bg-box-4"></div>
+      <div id="wrap">
+        <ul>
+          <li>
+            <div class="text">
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="text">
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="text">
+              <p></p>
+            </div>
+          </li>
+          <li class="curr">
+            <div class="text">
+              <p></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="guide--content clearfix" style="background-color: rgb(78, 78, 78)">
+      <div class="content--title">公司简介</div>
+      <p class="desc">
+        广西北海汉立商贸有限公司于2013年8月26日成立，注册地址广西北海市，
+        注册资本贰佰万圆整人民币，办公地点北海市北海大道69号信业大厦10幢二楼，
+        公司法定代表人韩国林，现有员工28人，
+        其中专业技术管理人员 6 人, 主要经营：液(气)态氮/氧/氩/二氧化碳、乙炔、丙烷、各类混合气体、标准气体、
+        液氨及各类酸碱化工产品机电设备、五金交电、一般商品和技术的进出口业务。
+        公司奉行“诚实守信，安全高效”的经营服务理念，年销售液态工业民用气体约8万Nm³，
+        目前主营业务覆盖广西全区，液态和氧总销量占据区内80%以上的市场份额，
+        还辐射邻近地区广东、云南等省及出口越南。公司下有两个全资子公司：北海汉立运输有限公司和北海汉立特种设备技术咨询服务有限公司。<br>
+      </p>
+      <p class="desc">
+        北海汉立运输有限公司拥有普通货物和二类、三类危险货物运输资质，自
+        有16台低温液体运输半挂车，6台危险化学品运输厢式车，主要从事液态氮/氧
+        /氩/二氧化碳以及各类瓶装工业气体的运输配送业务。曾独立承担中石化北海
+        LNG 4*6万 Nm³ 储罐及管道置换预冷液氮运输业务，并提前圆满完成客户要
+        求的配送任务。<br>
+      </p>
+      <p class="desc">
+        北海汉立特种设备技术咨询服务有限公司主要从事各类气体的推广运用、
+        供气系统的成套设计、安装及提供专业的售后服务、低温液体储罐的维修维护、
+        压力管道和化工装置的试压检验、置换、预冷。三年来公司承接过中石油广西分公司、
+        西南管道公司、中石化北海LNG、国投电厂及中铝集团等企业试压、置换预冷业务及参与应急抢险并圆满完成任务。<br>
+      </p>
+      <p class="desc">
+        公司拥有各类专业技术人才，专业结构合理，从业经验丰富，能承接各类
+        气体运用业务，公司拥有20000Nm³/h 空温式汽化器、5000L/h高压泵、
+        10000Nm³/h 气体加热器、真空泵(真空检测设备)及各种规格成套管道连接设
+        备等，能安全高效完成客户的需求。<br>
+      </p>
+      <p class="desc">
+        因为专注，所以专业!没有最好，只有更好!我们期待能为客户提供更好
+        的服务!客户的需求是我们团队努力追求的目标!
+      </p>
+    </div>
+    
+    <div class="main--content clearfix">
+      <div class="content--title">公司资质</div>
+      <div class="card--container">
+        <a href="https://ws4.sinaimg.cn/large/006tKfTcgy1fi5ibr5nrcj314a1gqjye.jpg">
+          <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fi5ibr5nrcj314a1gqjye.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws1.sinaimg.cn/large/006tKfTcgy1fi5icoel70j314a1gsjzl.jpg">
+          <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fi5icoel70j314a1gsjzl.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws3.sinaimg.cn/large/006tKfTcgy1fi5id3hs5jj311e1d2af6.jpg">      
+          <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi5id3hs5jj311e1d2af6.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws1.sinaimg.cn/large/006tKfTcgy1fi5ig61dgyj314a1gswme.jpg">      
+          <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fi5ig61dgyj314a1gswme.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws4.sinaimg.cn/large/006tKfTcgy1fi5igg5fi7j31161cq7aa.jpg">
+          <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fi5igg5fi7j31161cq7aa.jpg" alt="" class="card--img">
+        </a>
+      </div>
+    </div>
+    <div class="main--content zhiliang clearfix">
+      <div class="content--title">质量体系认证</div>
+      <div class="card--container">
+        <a href="https://ws2.sinaimg.cn/large/006tKfTcgy1fil4fhpd9gj30fk0liabo.jpg">
+          <img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fil4fhpd9gj30fk0liabo.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws3.sinaimg.cn/large/006tKfTcgy1fil4fn6nx2j30fk0litaa.jpg">
+          <img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fil4fn6nx2j30fk0litaa.jpg" alt="" class="card--img">
+        </a>
+      </div>
+      <div class="card--container">
+        <a href="https://ws4.sinaimg.cn/large/006tKfTcgy1fil4fuh3n5j30fk0lj0tx.jpg">      
+          <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fil4fuh3n5j30fk0lj0tx.jpg" alt="" class="card--img">
+        </a>
+      </div>
+    </div>
+    <div class="devices--container">
+      <div class="content--title">装备能力一览表</div>
+      <div class="devices--list-container">
+        <span class="name">装备名称</span>
+        <span class="size">规格型号</span>
+        <span class="number">数量</span>
+        <span class="status">技术状况</span>
+        <span class="date">投入时间</span>
+      </div>
+      <div class="devices--list-container" v-for="item in devices_list">
+        <span class="name">{{item.name}}</span>
+        <span class="size">{{item.size}}</span>
+        <span class="number">{{item.number}}</span>
+        <span class="status">{{item.status}}</span>
+        <span class="date">{{item.date}}</span>
+      </div>
+    </div>
+    <div class="devices2--container">
+      <div class="content--title">检测设备一览表</div>
+      <div class="devices--list-container">
+        <span class="name">名称</span>
+        <span class="size">规格型号</span>
+        <span class="number">数量</span>
+        <span class="status">性能说明</span>
+      </div>
+      <div class="devices--list-container" v-for="item in devices2_list">
+        <span class="name">{{item.name}}</span>
+        <span class="size">{{item.size}}</span>
+        <span class="number">{{item.number}}</span>
+        <span class="status">{{item.status}}</span>
+      </div>
+    </div>
+    <div class="history--container swiper-container swiper-container-horizontal">
+      <div class="content--title">公司足迹</div>
+      <div class="swipper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="item in img_list">
+            <a :href="item.url">
+              <img :src="item.url" alt="">
+              <div class="desc">
+                {{item.desc1}}
+              </div>
+              <div class="desc2">
+                {{item.desc2}}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="contact--content">
+      <div class="contact-content--right-part">联系我们</div>
+      <div class="contact-content--left-part">
+        <div class="item--content"><span class="title">韩国林(执行董事)</span><br><span class="subtitle">15907794482</span></div>
+        <div class="item--content"><span class="title">庞如佳(特种设备经理)</span><br><span class="subtitle">13877781953</span></div>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+ <script src="../js/jquery-pin.js"></script> 
+<script src="../js/jquery-rebox.js"></script>
+<script src="../js/jquery-litelighter.js"></script>
+<script src="../js/swiper-3.4.2.jquery.min.js"></script>
+<script>
+  jQuery(function ($) {
+      $(".nav-bar--container").pin()    
+      // $('.nav--item').click(function() {
+      //   $('.nav--item').removeClass('active')
+      //   $(this).addClass('active')
+      // })
+      // var swiper = new Swiper('.history--container', {
+      //   pagination: '.swiper-pagination',
+      //   slidesPerView: 'auto',
+      //   centeredSlides: true,
+      //   paginationClickable: true,
+      //   spaceBetween: 30
+      // });      
+
+      var swiper = new Swiper('.swipper-container', {
+        // pagination: '.swiper-pagination',
+        // paginationClickable: true,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        width: 500,
+        // freeMode: true,
+        autoplay: 6000,
+        slidesPerGroup: 3
+      });
+    });
+</script>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      devices_list: [
+        {name: '低温液体槽车',size: '35Nm³',number: '2台',status: '一级',date: '2016 年'},
+        {name: '低温液体槽车',size: '24.5Nm³',number: '5台',status: '一级',date: '2011 年'},
+        {name: '低温液体槽车',size: '21.6Nm³',number: '2台',status: '一级',date: '2016 年'},
+        {name: '低温液体槽车',size: '28.8Nm³',number: '1台',status: '一级',date: '2015 年'},
+        {name: '低温液体槽车',size: '22.3Nm³',number: '2台',status: '一级',date: '2008 年'},
+        {name: '空温式汽化器',size: 'QQ-3000',number: '2台',status: '良好',date: '2015 年'},
+        {name: '空温式汽化器',size: 'QQ-1500',number: '2台',status: '良好',date: '2015 年'},
+        {name: '气体加热炉',size: '50KW',number: '3台',status: '良好',date: '2015 年'},
+        {name: '低温液体泵',size: 'BPO- 1200/100',number: '1台',status: '良好',date: '2016 年'},
+      ],
+      devices2_list: [
+        { name: '水份检测仪(便携式)', size: 'DPT-600', number: '1台', status: '良好在用' },
+        { name: '氧份检测仪', size: '6PR-1200ppm02Ana|yzer', number: '1台', status: '良好在用' },
+        { name: '热偶真空计', size: 'ZDO-51', number: '1台', status: '良好在用' },
+        { name: '手持式真空计', size: 'C86-02(120)', number: '1台', status: '良好在用' },
+      ],
+      img_list: [
+        {
+          url: 'https://ws4.sinaimg.cn/large/006tNc79gy1fiikm62h62j30jn0dl3zn.jpg',
+          desc1: '贵港站压缩机干气密封试运转投产施工现场',
+          desc2: '(Q≥5000Nm3/h,T=50°C,P=10MPa)'
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tKfTcgy1fi90wxtvpvj307d05caa5.jpg',
+          desc1: '贵港站压缩机干气密封试运转投产施工现场',
+          desc2: '(Q≥5000Nm3/h,T=50°C,P=10MPa)'
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiiks3hr9nj30hm0dxjsj.jpg',
+          desc1: '河池站 DN1000*2 绝缘头更换注氮置换现场',
+          desc2: '(Q>6000Nm3/h,T≥5°C)'
+        },
+        {
+          url: 'https://ws2.sinaimg.cn/large/006tNc79gy1fiiksaqs14j30kf0e0t9p.jpg',
+          desc1: '河池站 DN1000*2 绝缘头更换注氮置换现场',
+          desc2: '(Q>6000Nm3/h,T≥5°C)'
+        },
+        {
+          url: 'https://ws4.sinaimg.cn/large/006tNc79gy1fiiksi5e2pj30j90ei0u7.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiiksqeqsfj30ji0eiac0.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiiksymqlbj30ja0d5abk.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikt627e8j30iw0cz0uk.jpg',
+          desc1: '团队风采',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikte1l0pj30jg0emgo6.jpg',
+          desc1: '团队风采',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiiktk9c0zj30iu0evq53.jpg',
+          desc1: '团队风采',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiiku08vbij30ir0c9758.jpg',
+          desc1: '装备实拍',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiiku5lu1nj30iv0cgwfb.jpg',
+          desc1: '装备实拍',
+          desc2: ''
+        },
+        {
+          url: 'https://ws4.sinaimg.cn/large/006tNc79gy1fiikuazwawj30iv0eejtm.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws2.sinaimg.cn/large/006tNc79gy1fiikug88wtj30j00eaq4n.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikunrpeyj30jl0frdhh.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikuyz4jdj30ir0fpgmt.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikvf8kt0j30jk0fwdhs.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws2.sinaimg.cn/large/006tNc79gy1fiikvk7kvtj30it0fgdgg.jpg',
+          desc1: '合作站点',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikvs02ebj30jl0fpwgd.jpg',
+          desc1: '北海新绎旅游船舶技改项目液氮预冷现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws4.sinaimg.cn/large/006tNc79gy1fiikvy5c8ij30kg0fr0ud.jpg',
+          desc1: '北海新绎旅游船舶技改项目液氮预冷现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikw5frvyj30jo0fqdhu.jpg',
+          desc1: '中石化北海 LNG 储罐预冷现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikwca7grj30ji0fwac4.jpg',
+          desc1: '中石化北海 LNG 储罐预冷现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikwk6lttj30ke0fq3zz.jpg',
+          desc1: '中石化 LNG 管道置换预冷现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikwzlbcwj30jj0e03zt.jpg',
+          desc1: '中石化北海 LNG 施工夜景',
+          desc2: ''
+        },
+        {
+          url: 'https://ws4.sinaimg.cn/large/006tNc79gy1fiikx6iuffj310e0kiq6d.jpg',
+          desc1: '中石化北海 LNG 首站置换施工现场',
+          desc2: ''
+        },
+        {
+          url: 'https://ws1.sinaimg.cn/large/006tNc79gy1fiikxfidbbj30bv0hfgme.jpg',
+          desc1: '储罐吊装',
+          desc2: ''
+        },
+        {
+          url: 'https://ws3.sinaimg.cn/large/006tNc79gy1fiikxla2ukj30bf0hn0us.jpg',
+          desc1: '储罐保养',
+          desc2: ''
+        }
+      ]
+    },
+    mounted: function () {
+      $('.card--container a').rebox();
+      $('.swiper-slide a').rebox();
+      (function () {
+        $('#wrap li').mouseover(function () {
+          if (!$(this).hasClass('curr')) {
+            $('#wrap li').removeClass('curr');
+            $(this).addClass('curr');
+            // 切换背景
+            $('#wrap li').each(function (index) {
+              if ($(this).hasClass('curr')) {
+                $('.bg').fadeOut(300);
+                $('.bg:eq(' + index + ')').fadeIn(500);
+              }
+            });
+            $('.curr').stop().animate({
+              width: 700
+            }, 500, 'linear');
+            $('#wrap li').not('.curr').stop().animate({
+              width: 100
+            }, 500, 'linear');
+          }
+        });
+      })()      
+    },
+    methods: {
+      changeNavBlock1: function(e) {
+        $('html,body').animate({scrollTop:$('.guide--content').offset().top}, 800)
+      },
+      changeNavBlock2: function(e) {
+        $('html,body').animate({scrollTop:$('.main--content').offset().top}, 800)
+      },
+      changeNavBlock3: function(e) {
+        $('html,body').animate({scrollTop:$('.devices--container').offset().top}, 800)
+      },
+      changeNavBlock4: function(e) {
+        $('html,body').animate({scrollTop:$('.devices2--container').offset().top}, 800)
+      },
+      changeNavBlock5: function(e) {
+        $('html,body').animate({scrollTop:$('.history--container').offset().top}, 800)
+      },
+      changeNavBlock6: function(e) {
+        $('html,body').animate({scrollTop:$('.zhiliang').offset().top}, 800)
+      }
+    }
+  })
+</script>
+
+</html>

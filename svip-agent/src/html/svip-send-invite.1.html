@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>邀请</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="svip-send-invite--container">
+      <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/svip-send-invite/envelop.png" alt="" class="top--img">
+      <section class="container--self-bonus-content">
+        <p class="content--title">我可获得奖励</p>
+        <div class="item--content">
+          <p class="item--title">200元</p>
+          <p class="item--subtitle">当好友完成注册立得</p>
+        </div>
+        <div class="item--content">
+          <p class="item--title">200元</p>
+          <p class="item--subtitle">当好友完成注册立得</p>
+        </div>
+      </section>
+
+      <section class="container--self-bonus-content">
+        <p class="content--title">好友可获得奖励</p>
+        <div class="item--content">
+          <p class="item--title">200元</p>
+          <p class="item--subtitle">当好友完成注册立得</p>
+        </div>
+      </section>
+
+      <div class="btn-area">
+        <div class="center-btn">邀请微信好友</div>
+      </div>
+      <!-- <p class="container--desc">共邀请 <span class="desc--data">8</span> 人，已获得奖励 <span class="desc--data">1200</span> 元</p> -->
+    </div>
+</body>
+
+<script src="../js/lib/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<script>
+    $(function() {
+        $('#showMask').tap(function() {
+            $('.share-mask').show()
+        })
+        $('.share-mask').tap(function() {
+            $('.share-mask').hide()
+        })
+    })
+</script>
+
+</html>

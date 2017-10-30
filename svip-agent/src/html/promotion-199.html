@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="full-screen" content="yes">
+  <title>邀请</title>
+  <link href="../css/style-svip-agent.css" rel="stylesheet">
+  <style>
+    .promotion-199--container {
+      background: url('//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/bg.png') no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="promotion-199--container">
+    <div class="container--header">
+      <img class="header--logo" src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/svip_register/logo.png" alt="">
+      <div class="header--title"><span class="title--brand">夜夜 </span>| 全球高端会所黑卡服务</div>
+    </div>      
+    <div class="promotion--main-content">
+      <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/card.png" alt="" class="main-content--img">
+      <div class="contant--btn">联系客服 了解详情</div>
+      <p class="desc-cutline">开通即可享受</p>
+      <section class="desc-part--item">
+        <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/icon1.png" alt="" class="item--img">
+        <p class="item--title">全球 2000 家顶级会所</p>
+        <p class="item--subtitle">酒水低消 3999 元</p>
+      </section>
+      <section class="desc-part--item">
+        <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/icon2.png" alt="" class="item--img">
+        <p class="item--title">经理均从业超过10年</p>
+        <p class="item--subtitle">服务开普，资源丰富</p>
+      </section>
+      <section class="desc-part--item">
+        <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/icon3.png" alt="" class="item--img">
+        <p class="item--title">充值赠送</p>
+        <p class="item--subtitle">全国通用</p>
+      </section>
+      <section class="desc-part--item">
+        <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/icon4.png" alt="" class="item--img">
+        <p class="item--title">小费信用卡支付</p>
+        <p class="item--subtitle">减免手续费</p>
+      </section>
+      <div class="main-content--btn">立即开通 <i class="iconfont">&#xe7b1;</i></div>
+    </div>
+    <p class="copyright">©夜夜 2017</p>
+    <div class="services-modal">
+      <div class="services-modal--container">
+        <div class="modal--header">
+          请添加客服微信<br>
+          为您解答疑虑
+        </div>
+        <img class="services-modal--qrcode" src="http://7xotti.com2.z0.glb.qiniucdn.com/FrFEWwygiRRgIey0cdWmHhR1S2Er" />
+        <div class="services-modal--cutline">长按二维码识别</div>
+        <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/finger.png" alt="" class="services-modal--finger">
+      </div>
+      <img src="//upyun.cdn.m.yeyeapp.in/h5-express/public/images/promotion-199/close.png" alt="" class="services-modal--close-icon">
+    </div>
+  </div>
+</body>
+<script src="../js/lib/zepto.min.js"></script>
+<script>
+  document.body.addEventListener('touchstart', function () {});  
+  $('.contant--btn').tap(function() {
+    $('.services-modal').addClass('active')
+  })
+  $('.services-modal--close-icon').tap(function() {
+    $('.services-modal').removeClass('active')
+  })
+</script>
+</html>

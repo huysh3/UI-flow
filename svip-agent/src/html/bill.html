@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-rem="375">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="full-screen" content="yes">
+    <title>账单</title>
+    <link href="../css/style-svip-agent.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="user-bill-container">
+      <div class="container--overview-content">
+        <section class="overview-content--item">
+          <p class="item--shop-name bottom-border">北京京华时代（中服）国乐北京京华时代（中服）国乐北京京华时代（中服）国乐... 账单</p>
+        </section>
+        <section class="overview-content--item">
+          <div class="item--cost bottom-border">
+            <span class="cost--left-part">房间消费</span>
+            <span class="cost--right-part">6,583 元</span>
+          </div>
+        </section>
+        <section class="overview-content--item">
+          <div class="item--wallet-info clearfix bottom-border">
+            <div class="wallet-info--left-part">
+              余额抵扣房间消费<br>
+              <span class="balance">当前 13,284 元 </span><span class="link">充值享优惠 ></span>
+            </div>
+            <div class="wallet-info--right-part">
+              - 0 元
+            </div>
+          </div>
+        </section>
+        <section class="overview-content--item">
+          <div class="item--tip-info active clearfix bottom-border">
+            <div class="tip-info--left-part">
+              小费<i class="iconfont">&#xe65f;</i>
+            </div>
+            <div class="tip-info--right-part">
+              6,800 元
+            </div>
+            <div class="tip-info--desc">
+              (限时减免手续费 210元)
+            </div>
+          </div>
+        </section>
+        <section class="overview-content--item">
+          <p class="item--footer">
+            <span class="footer--left-part">还需支付</span>
+            <span class="footer--right-part">13,284 元</span>
+          </p>
+        </section>
+      </div>
+      <div class="container--info-content">
+        <section class="info-content--item header">
+          <div class="table-cell">
+            <span class="left-part">消费信息</span>
+            <span id="showMoreBtn" class="right-part">展开 <i class="iconfont">&#xe660;</i></span>  
+          </div>
+        </section>
+        <div class="drawer active">
+          <section class="info-content--item">
+            <div class="table-cell bottom-border clearfix">
+              <span class="item--left-part">消费小票</span>
+              <div class="right-part ">
+                <img class="receipts-img" src="http://omi5dzcil.bkt.clouddn.com/2017-06-23-42.pic.jpg" alt="">
+                <img class="receipts-img" src="http://omi5dzcil.bkt.clouddn.com/2017-06-23-42.pic.jpg" alt="">
+              </div>  
+            </div>
+          </section>
+          <section class="info-content--item">
+            <div class="table-cell bottom-border">
+              <span class="item--left-part">消费商家</span>
+              <span class="right-part">北京京华时代（中服）国际</span>  
+            </div>          
+          </section>
+          <section class="info-content--item">
+            <div class="table-cell bottom-border">
+              <span class="item--left-part">账单创建时间</span>
+              <span class="right-part">2017-06-01  15:23:30</span>  
+            </div>          
+          </section>
+          <section class="info-content--item">
+            <div class="table-cell bottom-border">
+              <span class="item--left-part">支付状态</span>
+              <span class="right-part">已支付</span>  
+            </div>          
+          </section>
+          <section class="info-content--item">
+            <div class="table-cell bottom-border">
+              <span class="item--left-part">支付时间</span>
+              <span class="right-part">2017-06-02 12:23:30</span>  
+            </div>          
+          </section>
+          <section class="info-content--item">
+            <div class="table-cell bottom-border">
+              <span class="item--left-part">订单编号</span>
+              <span class="right-part">20170602584</span>  
+            </div>
+          </section>  
+          <section class="info-content--item">
+            <div class="table-cell clearfix staff-info--content">
+              <span class="item--left-part left-part">
+                <img src="http://omi5dzcil.bkt.clouddn.com/2017-06-23-42.pic.jpg" alt="" class="staff--avatar">
+                <p class="staff--desc">接待您的经理 刘威</p>
+                <p class="staff--desc">13602455397</p>
+              </span>
+              <span class="right-part">
+                <i class="iconfont">&#xe664;</i>
+              </span>  
+            </div>
+          </section>
+        </div>
+      </div>
+      <p class="container--bottom-desc">< 更多优惠 请关注公众号 ></p>
+      <!--<div id="payBtn" class="container--bottom-footer">支付账单 13,284 元</div>-->
+      <div class="container--bottom-footer disabled">
+        <p class="footer--title">无法支付自己创建的账单</p>
+        <p class="footer--subtitle">请转发给您的客户支付</p>
+      </div>
+    </div>
+
+    <div class="modal-container active">
+      <div class="container--mask"></div>
+      <div class="container--content">
+        <div class="modal--head">短信已发送至 13602455397</div>
+        <div class="modal--body">
+          <input class="body--input" placeholder="输入验证码">
+          <span class="body--resend">重新发送</span>
+        </div>
+        <div class="modal--footer"><div class="center-btn">下一步</div></div>
+      </div>
+    </div>
+</body>
+
+<script src="../js/lib/zepto.min.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
+<script src="../js/util.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#showMoreBtn').tap(function() {
+      if ($('.drawer').hasClass('active')) {
+        $('.drawer').removeClass('active')
+        $('#showMoreBtn').html('展开 <i class="iconfont">&#xe660;</i>')
+      } else {
+        $('.drawer').addClass('active')
+        $('#showMoreBtn').html('收起 <i class="iconfont">&#xe661;</i>')
+      }
+    })
+    $('#payBtn').tap(function() {
+      $('.drawer').removeClass('active')
+    })
+  })
+
+</script>
+
+</html>

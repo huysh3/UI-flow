@@ -1,0 +1,68 @@
+@import "./lib/lib-mixins";
+@import "./lib/lib-reset";
+@import "./lib/lib-rem";
+
+
+// index页面
+@import "./page-agent-register-landing";
+@import "./page-svip-agent-index";
+@import "./page-svip-agent-register";
+@import "./page-agent-send-invite";
+@import "./page-agent-invite-agent";
+@import "./page-agent-invite-record";
+@import "./page-agent-wallet";
+@import "./page-agent-qna";
+
+@import "./page-user-top-up";
+@import "./page-user-wallet";
+@import "./page-user-bill";
+
+@import "./component-mobile-captcha-modal";
+
+@import "./page-svip-send-invite";
+
+@import "./page-svip-register-origin-svip";
+
+@import "./page-pre-recharge-landing";
+@import "./page-pre-recharge-success";
+
+@import "./page-svip-block";
+
+@import "./page-promotion-199";
+
+// iconfont 管理
+@font-face {
+  font-family: 'iconfont';  /* project id 84475 */
+  src: url('//at.alicdn.com/t/font_bsks9suwdsegsyvi.eot');
+  src: url('//at.alicdn.com/t/font_bsks9suwdsegsyvi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_bsks9suwdsegsyvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_bsks9suwdsegsyvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_bsks9suwdsegsyvi.svg#iconfont') format('svg');
+}
+
+.clearfix::after {
+  content: '.';
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+.center-btn {
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: .9rem;
+  color: #92773c;
+  border-radius: .2rem;
+  background-color: #fac44d;
+  border: solid 2px rgba(5, 5, 5, 0.08);  
+}
+
+.center-btn:active {
+	background-color: #e4ac31;
+}
